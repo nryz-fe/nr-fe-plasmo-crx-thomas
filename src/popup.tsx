@@ -1,3 +1,4 @@
+import { Button } from "antd"
 import { useState } from "react"
 
 function IndexPopup() {
@@ -11,7 +12,9 @@ function IndexPopup() {
         padding: 16
       }}>
       <h1>
-        Welcome to your <a href="https://www.plasmo.com">Plasmo</a> Extension!
+        <a href="https://www.plasmo.com" target="_blank">
+          22222
+        </a>
       </h1>
       <input onChange={(e) => setData(e.target.value)} value={data} />
     </div>
