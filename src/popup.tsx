@@ -13,7 +13,7 @@ function IndexPopup() {
       }}>
       <h1>
         <a href="https://www.plasmo.com" target="_blank">
-          22222
+          33
         </a>
       </h1>
       <input onChange={(e) => setData(e.target.value)} value={data} />
