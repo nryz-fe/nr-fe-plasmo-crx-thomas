@@ -9,8 +9,11 @@
     "build": "plasmo build"
   },
   "dependencies": {
+    "antd": "^4.21.3",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "plasmo": "latest",
