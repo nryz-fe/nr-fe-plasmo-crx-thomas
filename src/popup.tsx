@@ -1,24 +1,27 @@
-import { Button } from 'antd'
-import { useState } from 'react'
+import 'antd/dist/antd.css'
+
+import { Route, Routes } from 'react-router-dom'
+
+import { HashRouter } from 'react-router-dom'
+import Layout from './Layout'
+import Manage from './pages/Manage'
+import NotFound from './pages/NotFound'
+import Set from './pages/Set'
+import Tool from './pages/Tool'
 
 function IndexPopup() {
-	const [data, setData] = useState('')
-
 	return (
-		<div
-			style={{
-				display: 'flex',
-				flexDirection: 'column',
-				padding: 16
-			}}
-		>
-			<h1>
-				<a href="https://www.plasmo.com" target="_blank">
-					33
-				</a>
-			</h1>
-			<input onChange={e => setData(e.target.value)} value={data} />
-		</div>
+		<HashRouter basename="/">
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Tool />} />
+					<Route path="tool" element={<Tool />} />
+					<Route path="manage" element={<Manage />} />
+					<Route path="set" element={<Set />} />
+				</Route>
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</HashRouter>
 	)
 }
 
