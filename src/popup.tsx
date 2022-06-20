@@ -8,14 +8,20 @@ import NotFound from './pages/NotFound'
 import Set from './pages/Set'
 import Tool from './pages/Tool'
 import { config } from './config'
-import { getUserInfo } from './api'
+import { message } from 'antd'
+import { reqGetUserInfo } from './api'
 import { useEffect } from 'react'
 
 function IndexPopup() {
 	useEffect(() => {
 		// 获取用户登录信息
-		getUserInfo().then(res => {
-			console.log('res:', res)
+		reqGetUserInfo().then(res => {
+			const { success, result, message: msg } = res
+			if (success && result) {
+				console.log('res:', result)
+			} else {
+				message.error('用户未登录')
+			}
 		})
 	}, [])
 

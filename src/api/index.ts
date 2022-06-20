@@ -1,6 +1,8 @@
-import request from '../fetch/intercept'
+import { request } from '../service'
 
-/** 获取用户信息 */
-export const getUserInfo = () => {
-	return request.get('/throwdata/throw/data/user/getUserInfo')
+/** 扫码登录接口 */
+export const reqGetUserInfo = () => {
+	return request.get({
+		url: '/throwdata/throw/data/user/getUserInfo'
+	})
 }
