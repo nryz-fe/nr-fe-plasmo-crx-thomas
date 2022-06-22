@@ -1,14 +1,18 @@
 // 未登录
 
-import { Button } from "antd"
 import { FC } from "react"
+import { Typography } from "antd"
+import { config } from "../../config"
 
 const NoLogin: FC<any> = () => {
+  const loginHref = config.loginUrl
   return (
     <div>
       <nav className="mb-[16px]">暂未登录...</nav>
       <nav>
-        <Button type="primary">立即登录</Button>
+        <Typography.Link href={loginHref} target="_blank">
+          立即登录
+        </Typography.Link>
       </nav>
     </div>
   )

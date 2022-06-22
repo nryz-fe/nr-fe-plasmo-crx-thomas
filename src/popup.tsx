@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound"
 import Set from "./pages/Set"
 import Tool from "./pages/Tool"
 import classNames from "classnames"
-import { config } from "./config"
 import { isEmpty } from "lodash-es"
 import { reqGetUserInfo } from "./api"
 import styles from "./index.module.less"
@@ -36,7 +35,7 @@ function IndexPopup() {
 
   return (
     <Spin spinning={loading}>
-      <div className={classNames("bg-blue-600", styles.container)}>
+      <div className={styles.container}>
         {isEmpty(userInfo) ? (
           <NoLogin />
         ) : (
