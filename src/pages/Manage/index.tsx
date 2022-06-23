@@ -1,19 +1,20 @@
 // 管理
 import { Avatar, Button, Space, Typography } from "antd"
-import { FC, useEffect } from "react"
+import { FC } from "react"
 
 import { reqLoginOut } from "~src/api"
+import { config } from "~src/config"
 
 interface ManageProps {
   userInfo: Record<string, any>
-  onLoginOutCallback: () => void
 }
 
-const Manage: FC<ManageProps> = ({ userInfo, onLoginOutCallback }) => {
+const Manage: FC<ManageProps> = ({ userInfo }) => {
   async function handleLoginOut() {
-    const res = await reqLoginOut()
-    console.log("res:", res)
-    onLoginOutCallback()
+    const res = (await reqLoginOut()) as any
+    if (res.success && res.data?.code === "1") {
+      window.open(config.loginUrl, "_blank")
+    }
   }
 
   return (

@@ -17,7 +17,7 @@ export const config = {
     plugins: "http://test.plugins.newrank.cn/"
   },
   production: {
-    loginUrl: `https://newrank.cn/user/login?displayType=login&source=130&backUrl=http://test.a.newrank.cn/center/#/index/&scene=adinsight_login`,
+    loginUrl: `https://newrank.cn/user/login?displayType=login&source=130&backUrl=https://a.newrank.cn/center/#/user&scene=adinsight_login`,
     main: "https://newrank.cn/",
     ade: "https://a.newrank.cn/",
     edit: "https://edit.newrank.cn/",

@@ -32,10 +32,6 @@ function IndexPopup() {
       .finally(() => setLoading(false))
   }, [])
 
-  function onLoginOutCallback() {
-    console.log("退出登录")
-  }
-
   return (
     <Spin spinning={loading}>
       <div className={styles.container}>
@@ -47,15 +43,7 @@ function IndexPopup() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Tool />} />
                 <Route path="tool" element={<Tool />} />
-                <Route
-                  path="manage"
-                  element={
-                    <Manage
-                      onLoginOutCallback={onLoginOutCallback}
-                      userInfo={userInfo}
-                    />
-                  }
-                />
+                <Route path="manage" element={<Manage userInfo={userInfo} />} />
                 <Route path="set" element={<Set />} />
               </Route>
               <Route path="*" element={<NotFound />} />

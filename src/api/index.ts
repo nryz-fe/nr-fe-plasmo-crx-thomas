@@ -8,5 +8,5 @@ export const reqGetUser = () => {
 
 //退出登录
 export const reqLoginOut = () => {
-  return axios_xyz.post(`${config.ade}xdnphb/nr/user/login/loginOut`)
+  return axios_xyz.post(`${config.ade}nr/user/login/loginOut`)
 }
