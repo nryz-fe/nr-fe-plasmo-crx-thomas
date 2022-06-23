@@ -1,20 +1,19 @@
-import "antd/dist/antd.css"
-import "../assets/style.less"
-
-import { HashRouter, Route, Routes } from "react-router-dom"
 import { Spin, message } from "antd"
+import "antd/dist/antd.css"
+import classNames from "classnames"
+import { isEmpty } from "lodash-es"
 import { useEffect, useState } from "react"
+import { HashRouter, Route, Routes } from "react-router-dom"
 
+import "../assets/style.less"
 import Layout from "./Layout"
+import { reqGetUser } from "./api"
+import styles from "./index.module.less"
 import Manage from "./pages/Manage"
 import NoLogin from "./pages/NoLogin"
 import NotFound from "./pages/NotFound"
 import Set from "./pages/Set"
 import Tool from "./pages/Tool"
-import classNames from "classnames"
-import { isEmpty } from "lodash-es"
-import { reqGetUserInfo } from "./api"
-import styles from "./index.module.less"
 
 function IndexPopup() {
   const [loading, setLoading] = useState(false)
@@ -22,16 +21,20 @@ function IndexPopup() {
 
   useEffect(() => {
     setLoading(true)
-    // 获取用户登录信息
-    reqGetUserInfo()
+    // // 获取用户登录信息
+    reqGetUser()
       .then((res) => {
-        const { success, result, message: msg } = res
-        if (success && result) {
-          console.log("res:", result)
+        const { success, data } = res as any
+        if (success) {
+          setUserInfo(data?.user || {})
         }
       })
       .finally(() => setLoading(false))
   }, [])
+
+  function onLoginOutCallback() {
+    console.log("退出登录")
+  }
 
   return (
     <Spin spinning={loading}>
@@ -44,7 +47,15 @@ function IndexPopup() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Tool />} />
                 <Route path="tool" element={<Tool />} />
-                <Route path="manage" element={<Manage />} />
+                <Route
+                  path="manage"
+                  element={
+                    <Manage
+                      onLoginOutCallback={onLoginOutCallback}
+                      userInfo={userInfo}
+                    />
+                  }
+                />
                 <Route path="set" element={<Set />} />
               </Route>
               <Route path="*" element={<NotFound />} />

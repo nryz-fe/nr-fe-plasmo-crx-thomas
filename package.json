@@ -11,7 +11,7 @@
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx "
   },
   "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
+    "**/*.less": "stylelint less",
     "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
     "**/*.{js,jsx,tsx,ts,less,md,json}": [
       "prettier --write"
@@ -20,6 +20,7 @@
   "dependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@plasmohq/storage": "^0.6.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "antd": "^4.21.3",
@@ -28,6 +29,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "lodash-es": "^4.17.21",
+    "postcss-less": "^6.0.0",
     "qs": "^6.10.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
@@ -40,6 +42,7 @@
     "@types/chrome": "0.0.188",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "17.0.40",
+    "@types/qs": "^6.9.7",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
@@ -63,10 +66,12 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "*://*/"
     ],
     "permissions": [
-      "tabs"
+      "tabs",
+      "cookies",
+      "proxy"
     ]
   }
 }

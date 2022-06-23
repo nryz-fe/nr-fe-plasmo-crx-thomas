@@ -1,13 +1,11 @@
 // 布局组件
+import { Divider, Radio, RadioChangeEvent } from "antd"
+import classNames from "classnames"
+import { FC, useState } from "react"
+import { Outlet } from "react-router"
+import { useNavigate } from "react-router-dom"
 
 import * as styles from "./index.module.less"
-
-import { Divider, Radio, RadioChangeEvent } from "antd"
-import { FC, useState } from "react"
-
-import { Outlet } from "react-router"
-import classNames from "classnames"
-import { useNavigate } from "react-router-dom"
 
 const Layout: FC<any> = () => {
   const [active, setActive] = useState<"tool" | "manage" | "set">("tool")
@@ -21,7 +19,7 @@ const Layout: FC<any> = () => {
   }
 
   return (
-    <div className="bg-cyan-300">
+    <div className={classNames(styles.layout, "bg-cyan-300")}>
       <div className={styles.navbar}>
         <Radio.Group value={active} onChange={onRouteChange}>
           <Radio.Button value="tool">工具</Radio.Button>

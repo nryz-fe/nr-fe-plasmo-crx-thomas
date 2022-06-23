@@ -1,14 +1,27 @@
+/* global process */
 const env = process.env.PLASMO_PUBLIC_ENV
 
 export const config = {
   development: {
-    loginUrl: `http://test.main.newrank.cn/user/login?displayType=login&source=130&type=121&scene=adinsight_login`
+    loginUrl: `http://test.main.newrank.cn/user/login?displayType=login&source=130&type=121&backUrl=http://test.a.newrank.cn/center/#/index/&scene=adinsight_login`,
+    main: "http://test.main.newrank.cn/",
+    ade: "http://test.a.newrank.cn/",
+    edit: "http://test.edit.newrank.cn/",
+    plugins: "http://test.plugins.newrank.cn/"
   },
   test: {
-    loginUrl: `http://test.main.newrank.cn/user/login?displayType=login&source=130&type=121&scene=adinsight_login`
+    loginUrl: `http://test.main.newrank.cn/user/login?displayType=login&source=130&type=121&backUrl=http://test.a.newrank.cn/center/#/index/&scene=adinsight_login`,
+    main: "http://test.main.newrank.cn/",
+    ade: "http://test.a.newrank.cn/",
+    edit: "http://test.edit.newrank.cn/",
+    plugins: "http://test.plugins.newrank.cn/"
   },
   production: {
-    loginUrl: `https://newrank.cn/user/login?displayType=login&source=130&scene=adinsight_login`
+    loginUrl: `https://newrank.cn/user/login?displayType=login&source=130&backUrl=http://test.a.newrank.cn/center/#/index/&scene=adinsight_login`,
+    main: "https://newrank.cn/",
+    ade: "https://a.newrank.cn/",
+    edit: "https://edit.newrank.cn/",
+    plugins: "https://plugins.newrank.cn/"
   }
 }[env]
 
